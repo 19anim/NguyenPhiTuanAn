@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link href="/dist/styles.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body class="bg-black flex px-5 justify-center">
+    <section class="w-[800px] flex flex-col gap-2 justify-center" id="app">
+      <article
+        class="flex flex-col items-center gap-3 bg-[#1e1e1e] w-full max-w-[600px] rounded-2xl py-4"
+      >
+        <header class="text-lg tracking-widest">INSTRUCTION</header>
+        <main class="text-left">
+          <ul>
+            <li class="list-disc">
+              At the begining, we have the amount of <strong>100</strong> for each currency.
+            </li>
+            <li class="list-disc">
+              Input the correct (the transfer amount must be smaller than the balance)
+            </li>
+          </ul>
+        </main>
+      </article>
+      <form
+        class="flex flex-col items-center gap-3 bg-[#1e1e1e] w-full max-w-[600px] rounded-2xl py-4"
+        id="swapForm"
+      >
+        <h2 class="text-4xl mb-4">Currency Swap</h2>
+        <select
+          name="fromCurrency"
+          id="fromCurrency"
+          class="bg-white text-black w-[70%] px-4 py-2 rounded-sm outline-none"
+        ></select>
+
+        <section class="w-[70%] gap-4 flex items-center">
+          <label class="basis-[30%]" for="amount">Current Balance</label>
+          <input
+            disabled
+            id="balance"
+            value="100"
+            class="bg-gray-700 text-black px-4 py-2 rounded-sm outline-none max-w-[70%] grow"
+            type="number"
+          />
+        </section>
+        <section class="w-[70%] flex gap-4 items-center">
+          <label for="amount">Transfer Amount</label>
+          <input
+            step="any"
+            id="transferAmount"
+            class="bg-white text-black px-4 py-2 rounded-sm outline-none max-w-[70%] grow"
+            type="number"
+          />
+        </section>
+
+        <select
+          name="toCurrency"
+          id="toCurrency"
+          class="bg-white text-black w-[70%] px-4 py-2 rounded-sm outline-none"
+        ></select>
+        <button class="bg-[#4caf50]">CONFIRM SWAP</button>
+        <section
+          id="successMessage"
+          class="text-red-800 font-bold bg-[#4caf50] px-4 py-2 rounded-lg hidden max-w-[70%]"
+        >
+          Successfully convert
+        </section>
+      </form>
+    </section>
+
+    <section
+      class="bg-[#1e1e1e] w-[450px] text-center rounded-xl h-[300px] overflow-y-auto py-4 px-4"
+    >
+      <h2 class="text-2xl mb-4">Transaction History</h2>
+      <ul id="transactionHistory" class="flex flex-col gap-2"></ul>
+    </section>
+
+    <div
+      id="modal"
+      class="fixed z-[1000] left-0 top-0 w-full h-full bg-[rgba(0,0,0,0.5)] justify-center items-center hidden text-black"
+    >
+      <div class="bg-white p-5 rounded-lg w-[300px] text-center relative">
+        <span id="modalCloseButton" class="absolute top-[5px] right-[15px] cursor-pointer"
+          >&times;</span
+        >
+        <p id="modalContent">This is an error message.</p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

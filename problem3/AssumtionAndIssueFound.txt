@@ -1,0 +1,15 @@
+Assumtion:
+  - useWalletBalances() - assume this would return balance of user (array of WalletBalance type)
+  - usePrices() - this would return a price subject like {"Osmosis": 1, "Ethereum": 2}
+
+Issue: 
+  - children const is unsed, can be removed
+  - Type of parameter blockchain in function getPriority should be string not any
+  - lhsPriority is not defined, and it is used in the condition of balances.filter => lhsPriority should be replaced by balancePriority
+  - balance.blockchain, lhs.blockchain are rhs.blockchain is not defined should be replace by balance.currency, lhs.currency are rhs.currency as balance, lhs and rhs type are WalletBalance
+  - balancePriority, leftPriority, rightPriority are lacking of type number
+  - Got Spaghetti code for the two if in the balances.filter function. Also the condition should be check for balance.amount > 0 (Would make more sense)
+  - Sort function is lacking of return 0. Should be replace by return rightPriority - leftPriority for a Descending sort
+  - Lacking of type for formattedBalances => Should be FormattedWalletBalance[]
+  - toFixed function is lacking of decimal number => can be toFixed(2) or toFixed(3)
+  - classes.row is not defined
